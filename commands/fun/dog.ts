@@ -5,12 +5,12 @@ export default createCommand({
 	desc: 'gib dog',
 	runs: async (msg) => {
 		const body = await (
-			await fetch('https://nekos.life/api/v2/img/woof')
+			await fetch('https://no-api-key.com/api/v1/animals/dog')
 		).json();
 
 		const output = new MessageEmbed()
 			.setTitle('Dog 🐶')
-			.setImage(body.url)
+			.setImage(body.image)
 			.setColor('#6df7ff');
 
 		sendMessage(msg.channelID, {

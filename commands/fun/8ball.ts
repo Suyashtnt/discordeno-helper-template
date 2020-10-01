@@ -4,25 +4,16 @@ export default createCommand({
 	command: '8ball',
 	desc: 'what is your fortune?',
 	aliases: ['ask', 'chance', 'dice'],
-	runs: (msg, args) => {
+	runs: async (msg, args) => {
 		const rando = Number(Math.random().toFixed(1));
-
+		const body = await (
+			await fetch('https://no-api-key.com/api/v1/magic8ball')
+		).json();
 		sendMessage(msg.channelID, {
 			embed: new MessageEmbed()
 				.setTitle('8Ball')
 				.setDescription(args ? args.join(' ') : 'something')
-				.addField(
-					rando <= 0.3
-						? 'Nope. Not a chance'
-						: rando <= 0.5
-						? 'Maybe'
-						: rando <= 0.6
-						? 'Good chance'
-						: rando <= 0.7
-						? 'YES. 100%'
-						: 'Not sure for now',
-					`Your value was ${rando}`
-				),
+				.addField(body.response, `Using no-api-key.com`),
 		});
 	},
 });
