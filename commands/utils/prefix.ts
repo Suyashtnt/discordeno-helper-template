@@ -1,8 +1,15 @@
-import { getPrefix } from "https://x.nest.land/discordeno-helper@1.1.1/db/db.ts";
-import { MessageEmbed, createPrefixCommand } from "../../deps.ts";
+import {
+	MessageEmbed,
+	createPrefixCommand,
+	MessageContent,
+} from '../../deps.ts';
 
-export default createPrefixCommand("prefix", ["pf"], {
-  embed: new MessageEmbed()
-    .setTitle("updated!")
-    .setDescription(`Your new prefix is now ${getPrefix("instert here")}`),
+export default createPrefixCommand('prefix', ['pf'], (msg) => {
+	const embed: MessageContent = {
+		embed: new MessageEmbed()
+			.setTitle('updated!')
+			.setDescription(`Your new prefix is now ${msg.content.split(' ')[1]}`),
+	};
+
+	return embed;
 });
