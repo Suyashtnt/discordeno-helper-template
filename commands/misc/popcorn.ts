@@ -8,7 +8,6 @@ export default createCommand({
 		if (args && args[0]) {
 			if (args[0] === 'eat') {
 				const env = config();
-				console.log(env);
 
 				if (env.POPCORNAPIKEY === undefined) {
 					sendMessage(
@@ -16,14 +15,6 @@ export default createCommand({
 						'sorry but the bot owner did not add an API key for this API :('
 					);
 				} else {
-					console.log(
-						JSON.stringify({
-							user: msg.author.username,
-							key: env.POPCORNAPIKEY.toString(),
-							eatMore: args[1] ? Boolean(args[1]) : false,
-						})
-					);
-
 					const eat = await (
 						await fetch('https://popcorn.tnt-man-inc.com', {
 							body: JSON.stringify({
