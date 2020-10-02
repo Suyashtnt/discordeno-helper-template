@@ -6,8 +6,10 @@ import {
 	upSince,
 } from '../../deps.ts';
 
+import nsfw from '../../inhibitors/nsfw.ts';
+
 export default createCommand({
-	command: 'uptime',
+	command: 'uptimeNSFW',
 	desc: 'the bots uptime',
 	runs: (msg) => {
 		const diff = Date.now() - upSince;
@@ -23,4 +25,5 @@ export default createCommand({
 			.setColor(`#35e07c`);
 		sendMessage(msg.channelID, { embed });
 	},
+	inhibitors: [nsfw],
 });
