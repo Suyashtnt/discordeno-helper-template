@@ -1,4 +1,11 @@
 {
-	"deno.enable": true,
-	"deno.unstable": true,
+    "deno.enable": true, // enables extension
+    "deno.lint": true, // inline deno lint diagnostics, requires `deno.unstable`
+    "deno.unstable": true, // also provides unstable type declarations in VS Code  
+    "deno.import_intellisense_autodiscovery": true,
+    "deno.import_intellisense_origins": {
+		"https://deno.land": true,
+		"https://x.nest.land": true,
+		"https://arweave.net": false
+    }
 }
