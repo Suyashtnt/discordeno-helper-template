@@ -6,7 +6,7 @@ import {
 	upSince,
 } from '../../deps.ts';
 
-import nsfw from '../../inhibitors/nsfw.ts';
+import nsfw from 'https://x.nest.land/discordeno-helper@2.4.0/inhibitors/nsfw.ts';
 
 export default createCommand({
 	command: 'uptimeNSFW',
